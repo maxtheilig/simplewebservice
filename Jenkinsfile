@@ -24,10 +24,13 @@ pipeline {
          }
       }
 
-//       stage('Deploy to Cluster') {
-//           steps {
-//             sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
-//           }
-//       }
+      stage('Deploy to Cluster') {
+          steps {
+            sh 'docker images'
+            sh 'eval $(minikube -p minikube docker-env)'
+            sh 'docker images'
+            sh 'kubectl apply -f deployment_service_ingress.yml'
+          }
+      }
    }
 }
