@@ -12,23 +12,17 @@ pipeline {
    }
 
    stages {
-//       stage('Preparation') {
-//          steps {
-//             cleanWs()
-//             git credentialsId: 'GitHub', url: "https://github.com/${ORGANIZATION_NAME}/simplewebservice"
-//          }
-//       }
       stage('Build') {
          steps {
             sh 'mvn clean install'
          }
       }
 
-//       stage('Build and Push Image') {
-//          steps {
-//            sh 'docker build . -t theilig/simple-web-service'
-//          }
-//       }
+      stage('Build and Push Image') {
+         steps {
+           sh 'docker build . -t theilig/simple-web-service'
+         }
+      }
 
 //       stage('Deploy to Cluster') {
 //           steps {
