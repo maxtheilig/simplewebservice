@@ -20,10 +20,7 @@ pipeline {
 
       stage('Build and Push Image') {
          steps {
-           sh 'eval $(minikube -p minikube docker-env)'
-           sh 'eval $(minikube -p minikube docker-env) && docker images'
            sh 'eval $(minikube -p minikube docker-env) && docker build . -t theilig/simple-web-service'
-           sh 'docker images'
          }
       }
 
