@@ -1,6 +1,11 @@
 pipeline {
    agent any
 
+   tools {
+       maven 'Maven 3.8.5'
+       jdk 'JDK 17'
+   }
+
    environment {
      SERVICE_NAME = "fleetman-webapp"
      REPOSITORY_TAG="${YOUR_DOCKERHUB_USERNAME}/${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
