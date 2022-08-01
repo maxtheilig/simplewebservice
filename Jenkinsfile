@@ -15,7 +15,7 @@ pipeline {
 //       }
       stage('Build') {
          steps {
-            sh 'echo No build required for Webapp.'
+            sh 'mvn clean install'
          }
       }
 
