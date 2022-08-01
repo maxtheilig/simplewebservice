@@ -20,15 +20,13 @@ pipeline {
 
       stage('Build and Push Image') {
          steps {
+           sh 'eval $(minikube -p minikube docker-env)'
            sh 'docker build . -t theilig/simple-web-service'
          }
       }
 
       stage('Deploy to Cluster') {
           steps {
-            sh 'docker images'
-            sh 'eval $(minikube -p minikube docker-env)'
-            sh 'docker images'
             sh 'kubectl apply -f deployment_service_ingress.yml'
           }
       }
